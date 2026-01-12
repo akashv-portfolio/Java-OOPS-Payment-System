@@ -1,0 +1,57 @@
+public class Transcation {
+    public static void main(String[] args){
+        Payment payment;
+        System.out.println("Gpay Transcation...");
+        payment=new Gpay();
+        ((process)payment).start();
+        payment.pay(500);
+        System.out.println("Phonepay Transcation...");
+        payment=new Phonepay();
+        ((process)payment).start();
+        payment.pay(700);
+        System.out.println("Credit Card Transcation...");
+        payment=new Creditcard();
+        ((process)payment).start();
+        payment.pay(90000);
+        System.out.println("Debit Card Transcation...");
+        payment=new Debitcard();
+        ((process)payment).start();
+        payment.pay(7800);
+        
+    }
+}
+
+interface Payment{
+    void pay(int amount);
+}
+
+abstract class process implements Payment{
+    void start(){
+        System.out.println("Payment Process Started....");
+    }
+}
+
+
+class Gpay extends process{
+    public void pay(int amount){
+    System.out.println("Paid Rs."+amount+ " Using Gpay");
+    }
+}
+
+class Phonepay extends process{
+    public void pay(int amount){
+        System.out.println("Paid Rs."+amount+ " Using Phonepay");
+    }
+}
+
+class Creditcard extends process{
+    public void pay(int amount){
+        System.out.println("Paid Rs."+amount+ " Using Credit Card");
+    }
+}
+
+class Debitcard extends process{
+    public void pay(int amount){
+        System.out.println("Paid Rs."+amount+ " Using Debit Card");
+    }
+}
